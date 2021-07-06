@@ -43,7 +43,7 @@ class BadBankNavbar extends React.Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         {/* ml-auto  */}
                         <Nav className="mr-auto ml-auto">
-                            <Nav.Link as={Link} to="/createaccount" id="createaccount" >Create Account</Nav.Link>
+                            <Nav.Link as={Link} to="/createaccount" id="createaccount" >Login / Create Account</Nav.Link>
                             <Nav.Link as={Link} to="/deposit" id="deposit" >Deposit</Nav.Link>
                             <Nav.Link as={Link} to="/withdraw" id="withdraw" >Withdraw</Nav.Link>
                             <Nav.Link as={Link} to="/alldata" id="alldata" >All Data</Nav.Link>
