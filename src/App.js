@@ -4,8 +4,9 @@ import React from 'react';
 
 
 import BadBankNavbar from './components/BadBankNavbar.js';
+import WelcomeBar from './components/WelcomeBar.js';
 import Home from './components/Home.js';
-import CreateAccount from './components/CreateAccount.js';
+import Account from './components/Account.js';
 import Deposit from './components/Deposit.js';
 import Withdraw from './components/Withdraw.js';
 import AllData from './components/AllData.js';
@@ -20,16 +21,32 @@ import {
 
 function App() {
   const [accountList,setAccountList] = React.useState(getInitialAccounts());
-  // const [userLoggedIn,setUserLoggedIn] = React.useState(false);
-  const [userAccountId,setUserAccountId] = React.useState(false);
+  const [userAccount,setUserAccount] = React.useState(false);
+  
   const validateLogin = (email,password) =>{
     const account = accountList.find(account=>{
-      return account.email === email && account.password ===password; 
-    }) ? true : false; 
+      return account.email === email && account.password ===password ;
+    }) ; 
 
-    // return true;
+    if(account){
+      setUserAccount(account);
+      return true;
+    }
+    else{
+      return false;
+    }
+
   }
 
+  const handleLogout = () => {
+    setUserAccount(false); 
+  }
+
+  const handleNewAccount = (account)=>{
+    account.accountId=accountList.length; 
+
+    setAccountList([account,...accountList])
+  }
 
   function getInitialAccounts() {
     return (
@@ -40,25 +57,18 @@ function App() {
       ]
     );
 
-    
-    // return (
-    //   [{ account: { name: "Jane Doe", email: "jane@me.com", password: "Access123" } },
-    //   { account: { name: "Peter Parker", email: "peter@mit.edu", password: "Passcode321" } },
-    //   { account: { name: "John Smith", email: "john@msn.com", password: "Letmein33" } },
-
-    //   ]
-    // );
   }
   return (
     <>
       <Router>
-        <BadBankNavbar />
+        <BadBankNavbar userAccount={userAccount}/>
+        {/* <WelcomeBar userAccount={userAccount}/> */}
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/createaccount">
-            <CreateAccount validateLogin={validateLogin}/>
+          <Route exact path="/account">
+            <Account validateLogin={validateLogin} userAccount={userAccount} handleLogout={handleLogout} handleNewAccount={handleNewAccount}/>
           </Route>
           <Route exact path="/deposit">
             <Deposit />

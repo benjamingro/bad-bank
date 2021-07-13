@@ -1,43 +1,40 @@
 import React from 'react';
-
 import Button from 'react-bootstrap/Button';
 
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
+    name: yup.string().required(),
     email: yup.string().required(),
     password: yup.string().required(),
 });
 
-function Login({ validateLogin,setStartNewAccount }) {
+function StartNewAccount({handleNewAccount,setStartNewAccount}){
 
-    const [invalidLogin,setInvalidLogin] = React.useState(false); 
-    const handleSubmit = (values) =>{
-        // alert('handleSubmit');
-        
-        // alert(values.email);
-        if(!validateLogin(values.email,values.password)){
-            setInvalidLogin(true); 
-        }
-        else{
-            setInvalidLogin(false); 
-        }
+    const handleSubmit = (values) => {
+        handleNewAccount({name:values.name,email:values.email,password:values.password}); 
+        alert('added new account'); 
     }
 
-    const startNewAccount = () =>{
-        setStartNewAccount(true);
+    const cancel = () =>{
+        setStartNewAccount(false);
     }
-    return (
+
+    
+
+
+    return(
         <>
             <div className="card">
                 <div className="card-header">
-                    Login
+                    Create a new account
                 </div>
                 <div className="card-body">
                     <Formik
                         validationSchema={schema}
                         initialValues={{
+                            name: '',
                             email: '',
                             password: ''
                         }}
@@ -53,6 +50,15 @@ function Login({ validateLogin,setStartNewAccount }) {
                             errors,
                         }) => (
                             <Form noValidate >
+                                <Field type="name" name="name" placeholder="Enter name" />
+                                <div className="row w-100 mb-2">
+                                    {errors.name && touched.name ? (
+
+                                        <div className="col text-danger ">{errors.name}</div>
+
+                                    ) : <div className="col">&nbsp;</div>}
+                                </div>
+
                                 <Field type="email" name="email" placeholder="Enter email" />
                                 <div className="row w-100 mb-2">
                                     {errors.email && touched.email ? (
@@ -73,29 +79,25 @@ function Login({ validateLogin,setStartNewAccount }) {
                                     ) : <div className="col">&nbsp;</div>}
                                 </div>
 
-                                <Button type="submit" className={touched.email?'':'disabled'}>Submit form</Button>
-
-                                <div className="row w-100 mb-2">
-                                    {invalidLogin ? (
-
-                                        <div className="col text-danger ">Account not found. Try again or create a new account.</div>
-
-                                    ) : <div className="col">&nbsp;</div>}
+                                <div className="row w-100">
+                                    <div className="col">
+                                        <Button type="submit">Create account</Button>
+                                    </div>
+                                    <div className="col">
+                                        <Button variant="secondary" onClick={cancel}>Cancel</Button>
+                                    </div>
                                 </div>
+
+                                
+
+                                
                             </Form>
                         )}
                     </Formik>
-                </div>
-            </div>
-            <div className="row w-100">
-                <div className="col">
-                    <Button variant="link" onClick={startNewAccount}>Create a new account</Button>
-                    {/* <a onClick={startNewAccount}>Create</a> a new account. */}
                 </div>
             </div>
         </>
     )
 }
 
-export default Login
-
+export default StartNewAccount
