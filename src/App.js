@@ -22,6 +22,10 @@ import {
 function App() {
   const [accountList,setAccountList] = React.useState(getInitialAccounts());
   const [userAccount,setUserAccount] = React.useState(false);
+
+  const [startNewAccount,setStartNewAccount] = React.useState(false); 
+  const [startNewAccountSuccess,setStartNewAccountSuccess] = React.useState(false); 
+
   
   const validateLogin = (email,password) =>{
     const account = accountList.find(account=>{
@@ -45,7 +49,12 @@ function App() {
   const handleNewAccount = (account)=>{
     account.accountId=accountList.length; 
 
-    setAccountList([account,...accountList])
+    setAccountList([account,...accountList]);
+    // successfully set up the new account, set the state variable to false
+    // to render the success card 
+    setUserAccount(account); 
+    setStartNewAccount(false); 
+    setStartNewAccountSuccess(true);
   }
 
   function getInitialAccounts() {
@@ -61,14 +70,24 @@ function App() {
   return (
     <>
       <Router>
-        <BadBankNavbar userAccount={userAccount}/>
+        <BadBankNavbar userAccount={userAccount} handleLogout={handleLogout}/>
         {/* <WelcomeBar userAccount={userAccount}/> */}
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/account">
-            <Account validateLogin={validateLogin} userAccount={userAccount} handleLogout={handleLogout} handleNewAccount={handleNewAccount}/>
+            <Account 
+            validateLogin={validateLogin} 
+            userAccount={userAccount} 
+            handleLogout={handleLogout} 
+            handleNewAccount={handleNewAccount}
+            startNewAccount={startNewAccount}
+            setStartNewAccount={setStartNewAccount}
+            startNewAccountSuccess={startNewAccountSuccess}
+            setStartNewAccountSuccess={setStartNewAccountSuccess}
+
+            />
           </Route>
           <Route exact path="/deposit">
             <Deposit />

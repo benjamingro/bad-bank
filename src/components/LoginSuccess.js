@@ -1,10 +1,13 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import {
+    Link
+  } from "react-router-dom";
 
-function LoginSuccess({ userAccount,handleLogout,setStartNewAccount }) {
+function LoginSuccess({ userAccount, handleLogout, setStartNewAccount }) {
 
-    const startNewAccount = () =>{
-        setStartNewAccount(true); 
+    const startNewAccount = () => {
+        setStartNewAccount(true);
     }
     return (
         <>
@@ -21,10 +24,11 @@ function LoginSuccess({ userAccount,handleLogout,setStartNewAccount }) {
                 </div>
                 <div className="card-body">
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Withdraw</li>
-                        <li className="list-group-item">Deposit</li>
-                        <li className="list-group-item">View all Data</li>
-                        <li className="list-group-item"><Button variant="link" onClick={startNewAccount}>Create a new account</Button></li>
+                        <li className="list-group-item"><Link to="/deposit">Deposit</Link></li>
+                        <li className="list-group-item"><Link to="/withdraw">Withdraw</Link></li>
+                        <li className="list-group-item"><Link to="/alldata">View all Data</Link></li>
+                        <li className="list-group-item"><Link onClick={startNewAccount}>Create a new account</Link></li>
+                        {/* <Button variant="link" onClick={startNewAccount}>Create a new account</Button> */}
                     </ul>
                 </div>
             </div>
