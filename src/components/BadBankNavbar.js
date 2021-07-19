@@ -31,9 +31,6 @@ function BadBankNavbar({ userAccount, handleLogout }) {
                         <Nav.Link as={Link} to="/alldata" id="alldata" >All Data</Nav.Link>
                         {userAccount && <Nav.Link as={Link} onClick={()=>{handleLogout()}} id="logout" >Logout</Nav.Link>}
 
-                        {/* <Link className="align-self-center" onClick={()=>{handleLogout()}}>Logout</Link> */}
-
-                        {/* <Button variant="secondary" onClick={()=>{handleLogout()}}>Logout</Button> */}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -73,7 +73,7 @@ function Login({ validateLogin,setStartNewAccount }) {
                                     ) : <div className="col">&nbsp;</div>}
                                 </div>
 
-                                <Button type="submit" className={touched.email?'':'disabled'}>Submit form</Button>
+                                <Button type="submit" className={touched.email?'':'disabled'} name="submit">Log_in</Button>
 
                                 <div className="row w-100 mb-2">
                                     {invalidLogin ? (

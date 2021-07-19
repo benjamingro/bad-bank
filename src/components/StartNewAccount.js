@@ -14,7 +14,6 @@ function StartNewAccount({handleNewAccount,setStartNewAccount}){
 
     const handleSubmit = (values) => {
         handleNewAccount({name:values.name,email:values.email,password:values.password}); 
-        alert('added new account'); 
     }
 
     const cancel = () =>{
