@@ -6,7 +6,7 @@ import App from './App';
 import Account from './components/Account.js';
 
 
-test('user log in',()=>{
+test('user log in',async ()=>{
   const { getByText, getByPlaceholderText, getByRole} = render(<App />);
   const accountLink = getByText('Log in / Create Account'); 
 
@@ -33,6 +33,8 @@ test('user log in',()=>{
     userEvent.click(submit);
   });
 
+  // tried to sleep before testing for state change
+  await new Promise((r) => setTimeout(r, 2000));
 
   // this is the Welcome screen - it never shows up
   // const greeting = getByText('Welcome');

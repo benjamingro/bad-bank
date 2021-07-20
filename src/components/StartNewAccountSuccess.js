@@ -5,8 +5,8 @@ function StartNewAccountSuccess({userAccount,setStartNewAccountSuccess, newAccou
     return(
         <>
             <div className="card">
-                <div className="card-header">
-                    Welcome to Bad Bank {userAccount.name}
+                <div className="card-header" style={{fontWeight:"bold"}}>
+                    Welcome {userAccount.name}
                 </div>
                 <div className="card-body">
                     <p className="card-text">

@@ -7,7 +7,7 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().required(),
-    password: yup.string().required(),
+    password: yup.string().min(8,'password must be at least 8 charachters long').required(),
 });
 
 function StartNewAccount({handleNewAccount,setStartNewAccount}){
@@ -26,7 +26,7 @@ function StartNewAccount({handleNewAccount,setStartNewAccount}){
     return(
         <>
             <div className="card">
-                <div className="card-header">
+                <div className="card-header" style={{fontWeight:"bold"}}>
                     Create a new account
                 </div>
                 <div className="card-body">

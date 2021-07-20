@@ -14,9 +14,7 @@ function Login({ validateLogin,setStartNewAccount }) {
 
     const [invalidLogin,setInvalidLogin] = React.useState(false); 
     const handleSubmit = (values) =>{
-        // alert('handleSubmit');
         
-        // alert(values.email);
         if(!validateLogin(values.email,values.password)){
             setInvalidLogin(true); 
         }
@@ -73,7 +71,7 @@ function Login({ validateLogin,setStartNewAccount }) {
                                     ) : <div className="col">&nbsp;</div>}
                                 </div>
 
-                                <Button type="submit" className={touched.email?'':'disabled'} name="submit">Log_in</Button>
+                                <Button type="submit" className={touched.email?'':'disabled'} name="submit">Log in</Button>
 
                                 <div className="row w-100 mb-2">
                                     {invalidLogin ? (

@@ -65,7 +65,7 @@ function App() {
     setUserAccount(account); 
     setStartNewAccount(false); 
     setStartNewAccountSuccess(true);
-    alert(JSON.stringify(accountList));
+    // alert(JSON.stringify(accountList));
   }
 
   const handleDeposit = (depositAmountUsd)=>{
