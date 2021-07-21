@@ -22,11 +22,18 @@ function BadBankNavbar({ userAccount, handleLogout }) {
         if(pathname==''){
             pathname='home';
         }
-        const myLinks = document.getElementsByTagName('a');
-        Array.prototype.forEach.call(myLinks, (link) => {
-            link.classList.remove('active');
-        });
-        document.getElementById(pathname).classList.add('active'); 
+        try
+        {
+            const myLinks = document.getElementsByTagName('a');
+            Array.prototype.forEach.call(myLinks, (link) => {
+                link.classList.remove('active');
+            });
+            document.getElementById(pathname).classList.add('active');
+        }
+        catch(e){
+            // fail silently, DOM has not loaded yet
+        }
+         
     };
     UpdateLinkActive();
     //#endregion
