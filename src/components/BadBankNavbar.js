@@ -11,6 +11,9 @@ import {
     useLocation
 } from "react-router-dom";
 
+import '../css/BadBankNavbar.css';
+
+
 function BadBankNavbar({ userAccount, handleLogout }) {
 
     //#region Update active link in Navbar using useLocation() . 
@@ -19,16 +22,23 @@ function BadBankNavbar({ userAccount, handleLogout }) {
         let pathname = location.pathname;
         // transforms /account to account
         pathname = pathname.substring(1);
-        if(pathname==''){
-            pathname='home';
-        }
+        // if(pathname==''){
+        //     pathname='home';
+        // }
         try
         {
             const myLinks = document.getElementsByTagName('a');
             Array.prototype.forEach.call(myLinks, (link) => {
                 link.classList.remove('active');
+                if(link.id!='home'){
+                    link.classList.add('inactive');
+                }
+                
             });
+
+            document.getElementById(pathname).classList.remove('inactive');
             document.getElementById(pathname).classList.add('active');
+
         }
         catch(e){
             // fail silently, DOM has not loaded yet

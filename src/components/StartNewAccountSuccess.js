@@ -13,7 +13,7 @@ function StartNewAccountSuccess({userAccount,setStartNewAccountSuccess, newAccou
                         You have successfully created a new account. 
                     </p>
                     <p className="card-text">
-                        All new accounts start with a <b>${newAccountBalance}</b> account balance. 
+                        All new accounts start with a <b>${newAccountBalance.toFixed(2)}</b> account balance. 
                     </p>
                     <p className="card-text d-flex justify-content-center">
                         <Button variant="primary" onClick={()=>{setStartNewAccountSuccess(false)}}>Get started</Button>
