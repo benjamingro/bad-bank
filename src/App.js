@@ -124,9 +124,6 @@ function App() {
             newAccountBalance={newAccountBalance}
             />
           </Route>
-          {/* <Route exact path="/deposit">
-            <Deposit userAccount={userAccount} handleDeposit={handleDeposit}/>
-          </Route> */}
           <Route exact path="/deposit">
             { userAccount && <Deposit userAccount={userAccount} handleDeposit={handleDeposit} depositSuccess={depositSuccess} setDepositSuccess={setDepositSuccess}/> }
             { !userAccount && <Redirect to={{pathname:"/account"}} /> }

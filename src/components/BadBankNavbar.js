@@ -22,9 +22,7 @@ function BadBankNavbar({ userAccount, handleLogout }) {
         let pathname = location.pathname;
         // transforms /account to account
         pathname = pathname.substring(1);
-        // if(pathname==''){
-        //     pathname='home';
-        // }
+
         try
         {
             const myLinks = document.getElementsByTagName('a');
@@ -118,9 +116,7 @@ function BadBankNavbar({ userAccount, handleLogout }) {
                 <Navbar.Brand as={Link} to="/" id="home" >Bad Bank&nbsp;&nbsp;<FontAwesomeIcon icon={faMask} className="" style={{}} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    {/* ml-auto  */}
                     <Nav className="mr-auto ml-auto">
-
                         <OverlayTrigger trigger="hover" placement="bottom" overlay={homeTooltip}>
                             <Nav.Link as={Link} to="/account" id="account" >
                                 {!userAccount && (
