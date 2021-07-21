@@ -3,17 +3,35 @@ import { Navbar, Button, Nav, NavDropdown, Form, FormControl, Tooltip, OverlayTr
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMask } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import Switch from "react-switch";
 
-// import MenuBarTooltip from './MenuBarTooltip.js';
-
-
-
-
+import {
+    useLocation
+} from "react-router-dom";
 
 function BadBankNavbar({ userAccount, handleLogout }) {
+
+    //#region Update active link in Navbar using useLocation() . 
+    const UpdateLinkActive = () => {
+        let location = useLocation();
+        let pathname = location.pathname;
+        // transforms /account to account
+        pathname = pathname.substring(1);
+        if(pathname==''){
+            pathname='home';
+        }
+        const myLinks = document.getElementsByTagName('a');
+        Array.prototype.forEach.call(myLinks, (link) => {
+            link.classList.remove('active');
+        });
+        document.getElementById(pathname).classList.add('active'); 
+    };
+    UpdateLinkActive();
+    //#endregion
+
+
     const [tooltips, setTooltips] = React.useState(true);
     const homeTooltip = (
         tooltips && !userAccount ?
@@ -98,10 +116,6 @@ function BadBankNavbar({ userAccount, handleLogout }) {
                             </Nav.Link>
                         </OverlayTrigger>
 
-
-
-
-                        {/* <MenuBarTooltip show={homeTooltip} targetId="deposit"/> */}
                         <OverlayTrigger trigger="hover" placement="bottom" overlay={depositTooltip}>
                             <Nav.Link as={Link} to="/deposit" id="deposit" >Deposit</Nav.Link>
                         </OverlayTrigger>

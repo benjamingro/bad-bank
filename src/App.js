@@ -16,8 +16,10 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
 } from "react-router-dom";
+
+
 
 function App() {
   const newAccountBalance = 20; 
@@ -31,8 +33,7 @@ function App() {
 
   const [depositSuccess,setDepositSuccess] = React.useState(false);
 
-
-
+  
 
   
   const validateLogin = (email,password) =>{
@@ -105,7 +106,7 @@ function App() {
   return (
     <>
       <Router>
-        <BadBankNavbar userAccount={userAccount} handleLogout={handleLogout}/>
+        <BadBankNavbar userAccount={userAccount} handleLogout={handleLogout}  />
         <Switch>
           <Route exact path="/">
             <Home />
