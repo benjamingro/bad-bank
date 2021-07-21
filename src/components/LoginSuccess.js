@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 
 function LoginSuccess({ userAccount, handleLogout, setStartNewAccount }) {
 
@@ -14,12 +14,12 @@ function LoginSuccess({ userAccount, handleLogout, setStartNewAccount }) {
             <div className="card">
                 <div className="card-header">
                     <div className="row w-100">
-                        <div className="col align-self-center d-flex justify-content-center" style={{fontWeight:"bold",fontSize:"1.3rem"}}>
+                        <div className="col align-self-center " style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
                             Welcome {userAccount.name}
                         </div>
-                        {/* <div className="col-4">
-                            <Button variant="secondary" onClick={handleLogout}>Logout</Button>
-                        </div> */}
+                        <div className="col d-flex justify-content-end align-self-center">
+                            <span >Account balance:</span>&nbsp;<span style={{fontWeight:"bold"}}>${userAccount.accountBalanceUsd.toFixed(2)}</span>
+                        </div>
                     </div>
                 </div>
                 <div className="card-body">

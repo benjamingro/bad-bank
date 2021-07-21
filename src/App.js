@@ -4,7 +4,6 @@ import React from 'react';
 
 
 import BadBankNavbar from './components/BadBankNavbar.js';
-import WelcomeBar from './components/WelcomeBar.js';
 import Home from './components/Home.js';
 import Account from './components/Account.js';
 import Deposit from './components/Deposit.js';
@@ -107,7 +106,6 @@ function App() {
     <>
       <Router>
         <BadBankNavbar userAccount={userAccount} handleLogout={handleLogout}/>
-        {/* <WelcomeBar userAccount={userAccount}/> */}
         <Switch>
           <Route exact path="/">
             <Home />

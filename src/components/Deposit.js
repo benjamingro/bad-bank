@@ -19,7 +19,7 @@ function Deposit({ userAccount, handleDeposit, depositSuccess, setDepositSuccess
                             <div className="card-body">
                                 <div className="row w-100 mb-4">
                                     <div className="col d-flex justify-content-center">
-                                        Current account balance is&nbsp;<b>${userAccount.accountBalanceUsd}</b>
+                                        Current account balance is&nbsp;<b>${userAccount.accountBalanceUsd.toFixed(2)}</b>
                                     </div>
                                 </div>
                                 <div className="row w-100 mb-4">
@@ -39,7 +39,7 @@ function Deposit({ userAccount, handleDeposit, depositSuccess, setDepositSuccess
                             <div className="card-body">
                                 <div className="row w-100 mb-4">
                                     <div className="col d-flex justify-content-center">
-                                        Current account balance is&nbsp;<b>${userAccount.accountBalanceUsd}</b>
+                                        Current account balance is&nbsp;<b>${userAccount.accountBalanceUsd.toFixed(2)}</b>
                                     </div>
                                 </div>
                                 <div className="row w-100 mb-4">
