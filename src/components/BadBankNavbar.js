@@ -33,16 +33,15 @@ function BadBankNavbar({ userAccount, handleLogout }) {
                 }
                 
             });
-
             document.getElementById(pathname).classList.remove('inactive');
             document.getElementById(pathname).classList.add('active');
-
         }
         catch(e){
             // fail silently, DOM has not loaded yet
         }
          
     };
+    
     UpdateLinkActive();
     //#endregion
 
